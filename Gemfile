@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-#gem "spree", :path => File.dirname(__FILE__)
-#gem 'spree_cmd'
+gem "spree", :path => File.dirname(__FILE__)
+gem 'spree_cmd'
 #gem 'spree', '0.60.4'
 gem 'sqlite3-ruby'
 

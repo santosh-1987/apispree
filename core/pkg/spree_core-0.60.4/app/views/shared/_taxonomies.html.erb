@@ -1,0 +1,19 @@
+<div id="taxonomies" class="sidebar-item">
+  <% get_taxonomies.each do |taxonomy| %>
+    <ul class="navigation-list">
+      <div><li<%== ' class="current"' if @taxon && @taxon == taxonomy.root %>>
+        <%= link_to t("shop_by_taxonomy", :taxonomy => taxonomy.name.singularize), seo_url(taxonomy.root),
+                                          :class => 'root' %>
+				<% if taxonomy.image %>
+				<%= link_to(image_tag(taxonomy.image.attachment.url(:small)),seo_url(taxonomy.root))%><%end%>
+      </li></div>
+
+      <% taxonomy.root.children.each do |taxon| %>
+        <li<%== ' class="current"' if @taxon and ([@taxon] + @taxon.ancestors).include?(taxon) %>>
+          <%= link_to taxon.name, seo_url(taxon) %>
+        </li>
+	    <% end %>
+
+	  </ul>
+  <% end %>
+</div>
